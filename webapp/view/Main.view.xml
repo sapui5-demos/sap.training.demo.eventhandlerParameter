@@ -1,0 +1,32 @@
+<mvc:View controllerName="sap.training.demo.eventhandlerParameter.controller.Main" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<Input value="{/value}"/>
+					
+					<!--In XMLViews and JSONViews it is possible to directly specify the parameters that should be passed into the event handler function.
+					These parameters then are passed instead of the event object:-->
+					<Button text="{i18n>butLabDoIt}" press=".onPress('Hello World', ${/value},  ${/value} === 'X' ? '1' : '2' )"/>
+					
+					
+				<!--There are two special named models available in event handlers to make accessing certain values easier:
+				    The first one is named $parameters and contains the event parameters:
+
+						<Select change=".doSomething(${$parameters>/selectedItem})" />
+					
+					Here the event parameter selectedItem is passed into the event handler.
+
+					The other one is named $source and is a ManagedObjectModel which wraps the control firing the event:
+
+						<Button text="Press Me" press=".doSomething(${$source>/text})" />
+						
+					Here the text of the pressed button is passed into the event handler.-->
+					
+					<Button text="{i18n>butLabHello}" press="sap.m.MessageBox.show('Hello')" />
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
